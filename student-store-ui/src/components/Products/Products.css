@@ -1,0 +1,16 @@
+#productContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#imageFix{
+    height: 350px;
+    width: 250px;
+    background: var(--pure-white);
+    border: solid 1px var(--border-color);
+   
+}
