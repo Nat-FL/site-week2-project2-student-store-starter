@@ -3,7 +3,6 @@ import axios from "axios";
 import "./ProductDetails.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Products from "../Products/Products";
 
 export default function ProductDetails() {
   const [product, setProduct] = useState({});

@@ -1,12 +1,13 @@
-import React, {useState} from "react"
-import ProductDetails from "../ProductDetails/ProductDetails"
-import Products from "../Products/Products";
+//**COMPONENT THAT IS NO LONGER BEING USED FOR PROJECT**/
 
-export default function ProductView({viewProduct}) {
+// import React, {useState} from "react" import ProductDetails from "../ProductDetails/ProductDetails"
+// import Products from "../Products/Products";
+
+//  export default function ProductView({viewProduct}) {
    
-    console.log(viewProduct.id)
-    console.log(viewProduct.name)
-   console.log(viewProduct.description)
-}
+//      console.log(viewProduct.id)
+//      console.log(viewProduct.name)
+//     console.log(viewProduct.description)
+//  }
 
 

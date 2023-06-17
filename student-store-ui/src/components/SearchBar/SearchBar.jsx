@@ -1,9 +1,5 @@
 import * as React from "react";
 import "./SearchBar.css";
-import { useState } from "react";
-import ProductGrid from "../Products/Products";
-import Home from "../Home/Home";
-import { Outlet } from "react-router-dom";
 
 export default function SearchBar({
   searchTerm,
