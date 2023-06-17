@@ -1,59 +1,82 @@
-import React, {useState} from 'react'
-import "./SearchBar.css"
-import axios from "axios"
+import * as React from "react";
+import "./SearchBar.css";
+import { useState } from "react";
+import ProductGrid from "../Products/Products";
+import Home from "../Home/Home";
+import { Outlet } from "react-router-dom";
 
-export default function SearchBar(){
+export default function SearchBar({
+  searchTerm,
+  setSearchTerm,
+  category,
+  setCategory,
+}) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
-    const [productInput, setInput] = useState("")
-   // const [productInfo, setProductInfo] = useState("")
+  const handleChange = (event) => {
+    event.preventDefault();
+    setSearchTerm(event.target.value);
+    console.log(event.target.value);
+  };
 
- 
+  function handleCategoryClick(event) {
+    const newCategory = event.target.innerText;
+    setCategory(newCategory);
+  }
 
-      const handleSubmit = (event) =>{
-         event.preventDefault();
-        
-        
-         console.log(productInput)
+  return (
+    <nav className="sub-navbar">
+      <div className="content">
+        <div className="row">
+          <div className="search-bar">
 
 
-       // productInput.innerHTML = ""; 
-        //  {productInput.filter()}
-        //  try{
-        //       const response = await axios.get(`https://codepath-store-api.herokuapp.com/store/${input}`)
-
-        //    }
-      }
-
-      const filterProducts = () =>{
-
-      }
-
-    //retrieves input from user and updates input value using setter-setInput
-    const handleInputChange = (event) =>{
-        setInput(event.target.value)
-        console.log(event.target.value)
-    }
-
-    return(
-        <>
-        <div>
-             {/* onSubmit = {handleSubmit} */}
-        <form onSubmit =  {handleSubmit}>
-            <label>Search:</label>
-            {/* When value changes want to do/trigger something */}
-            <input 
-            type="text" 
-            id="productInput" 
-            placeholder='search'
-            value = {productInput} 
-            onChange= {handleInputChange}
+            <input
+              type="text"
+              name="search"
+              onChange={handleChange}
+              placeholder="Search"
+              value={searchTerm}
             />
 
-            <button type="submit">Submit</button>
-        </form>
-       
+            <i className="material-icons">search</i>
+          </div>
+          <div className="links">
+            <span className="help">
+              <i className="material-icons">help</i>Help
+            </span>
+            <div className="cart">
+              <a href="/">
+                My Cart<i className="material-icons">shopping_cart</i>
+              </a>
+            </div>
+          </div>
         </div>
-       
-        </>
-    )
-};
+        <div className="row">
+          <div className="hamburger-menu">
+            <i className="material-icons">menu</i>
+          </div>
+          <ul className="category-menu open">
+            <li className={category == "All Categories" ? "is-active" : ""}>
+              <button onClick={handleCategoryClick}>All Categories</button>
+            </li>
+            <li className={category == "Clothing" ? "is-active" : ""}>
+              <button onClick={handleCategoryClick}>Clothing</button>
+            </li>
+            <li className={category == "Food" ? "is-active" : ""}>
+              <button onClick={handleCategoryClick}>Food</button>
+            </li>
+            <li className={category == "Accessories" ? "is-active" : ""}>
+              <button onClick={handleCategoryClick}>Accessories</button>
+            </li>
+            <li className={category == "Tech" ? "is-active" : ""}>
+              <button onClick={handleCategoryClick}>Tech</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+}
