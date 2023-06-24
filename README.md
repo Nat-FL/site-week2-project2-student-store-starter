@@ -36,12 +36,16 @@ Check out our [deployed Student Store](https://codepath-student-store-demo.surge
 
 ### Core Features
 
-- [ ] User can click to expand the shopping cart in the left navigation.
-- [ ] Users can click the '+' button on a product cart to increment that product in the shopping cart.
+- [X] User can click to expand the shopping cart in the left navigation.
+- [X] Users can click the '+' button on a product cart to increment that product in the shopping cart.
 - [ ] Users can click the '-' button on a product cart to decrement that product in the shopping cart. If the count is zero, the product should be removed from the cart.
-- [ ] The shopping cart displays a table of products, quantities, subtotal, tax, and total.
-- [ ] Users can checkout, and receive a receipt confirming their purchase.
+- [X] The shopping cart displays a table of products, quantities, subtotal, tax, and total.
+- [X] Users can checkout, and receive a receipt confirming their purchase.
 
+<a href="https://www.loom.com/share/b5dd068f0fa9420aa1ab7f56ea38f676">
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/b5dd068f0fa9420aa1ab7f56ea38f676-with-play.gif">
+  </a>
+  
 ### Stretch Features
 
 - [ ] Create an endpoint for fetching all orders in the database and an endpoint for serving an individual order based on its ID.
