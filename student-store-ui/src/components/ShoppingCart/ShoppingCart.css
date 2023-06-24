@@ -1,0 +1,39 @@
+.shopping-cart {
+    width: 100%;
+    color: #fff;
+}
+
+
+.shopping-cart-row {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    color: white
+    /* border-bottom: solid 1px var(--border-color); */
+}
+
+.shoppingCart-display{
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+.shopping-cart .product-row div {
+    flex: 1;
+}
+.name{
+    
+     margin-right: 25px; 
+     /* padding: 10px; */
+    /* padding-inline: 10px; */
+}
+
+.quantity{
+    margin-right: 25px; 
+}
+
+.initialState{
+    color: white; 
+    font-size: 20px;
+}
