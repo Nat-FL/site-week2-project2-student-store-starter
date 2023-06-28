@@ -38,13 +38,14 @@ Check out our [deployed Student Store](https://codepath-student-store-demo.surge
 
 - [X] User can click to expand the shopping cart in the left navigation.
 - [X] Users can click the '+' button on a product cart to increment that product in the shopping cart.
-- [ ] Users can click the '-' button on a product cart to decrement that product in the shopping cart. If the count is zero, the product should be removed from the cart.
+- [X] Users can click the '-' button on a product cart to decrement that product in the shopping cart. If the count is zero, the product should be removed from the cart.
 - [X] The shopping cart displays a table of products, quantities, subtotal, tax, and total.
 - [X] Users can checkout, and receive a receipt confirming their purchase.
 
-<a href="https://www.loom.com/share/b5dd068f0fa9420aa1ab7f56ea38f676">
-    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/b5dd068f0fa9420aa1ab7f56ea38f676-with-play.gif">
-  </a>
+
+<a href="https://www.loom.com/share/f23bba0143404806bbe8ff52a5627a63">
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/f23bba0143404806bbe8ff52a5627a63-with-play.gif">
+</a>  
   
 ### Stretch Features
 
