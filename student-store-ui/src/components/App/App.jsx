@@ -7,21 +7,18 @@ import { useEffect, useState } from "react";
 import About from "../About/About";
 import ProductDetails from "../ProductDetails/ProductDetails";
 import Overlay from "../Overlay/Overlay";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import {useRef} from "react"
 
 export default function App() {
   const url = "https://codepath-store-api.herokuapp.com/store";
 
+  //setting up state variables
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("All Categories");
-
   let [quantity, setQuantity] = useState({})
   let [shoppingCart, setShoppingCart] = useState([])
-  let totalCost = useRef(0)
+  
 
-  //console.log(products);
   useEffect(() => {
     axios.get(url).then((response) => {
       
@@ -29,76 +26,68 @@ export default function App() {
     });
   }, []);
 
-
-    const setTotalPrice = (newTotalPrice) => {
-      //totalPriceRef.current = newTotalPrice; 
-    }
+    //adds product and quantity to shoppingCart array
     const addProduct = (productId) =>{
-      
+
+      //checks if product already exists and if so increase quantities state
       if(productId in quantity){
         const add = {...quantity, [productId]: quantity[productId]+1};
         setQuantity(add)
-        console.log("product id:" + productId)
 
+      //creates new product and sets its quantity to 1
       }else{
-        const newProduct = {...quantity, [productId]: 1}; //creates new product 
+        const newProduct = {...quantity, [productId]: 1}; 
         setQuantity(newProduct)
       }
 
+      //checks if a product already exists inside the shoppingCart array
       const cartItem = shoppingCart?.find((item)=> item.id == productId);
 
-      if(cartItem){
-        
+      //if the item already exists inside the cart map through the cart until its found and update the item's quantity
+      if(cartItem){   
         const updateCart = shoppingCart?.map((item)=>{
           if(item.id == productId){
             return {...item, quantity: item.quantity+1}
           }
-          console.log(item)
+      
           return item; 
         }); 
+
         setShoppingCart(updateCart)
         item.quantity++
         item.cost = item.cost + item.unitPrice
+
         setTotalPrice(totalPriceRef.current + item.unitPrice)
+
+      //else add new product to the shoppingCart
       }else{
         setShoppingCart([...shoppingCart,{id: productId, quantity:1}])
       }
     }
 
+     //removes product and quantity to shoppingCart array
     const removeProduct = (productId) =>{
-      
-       if(productId in quantity){
-           const remove = {...quantity, [productId]: quantity[productId]-1};
-        setQuantity(remove)
-         console.log("product id:" + productId)
-         console.log("quantity: ", quantity)
-        }
-        // const remove = {...quantity, [productId]: quantity[productId]-1};
-      //  // setQuantity(remove)
-      //  // console.log("product id:" + productId)
-
-      // }
-      
-
       const cartItem = shoppingCart?.filter((item)=> item.id == productId);
 
-      // const updateCart = shoppingCart?.filter((item)=>{ 
-      //   if(cartItem && (item.quantity == 0)){
-      //     if(item.id == productId){
-      //       // item => item.id == productId.id)
-      //           return(setShoppingCart([...updateCart]))
-      //     }
+       const updateCart = shoppingCart?.filter((item,index)=>{ 
+
+        //checks if cartItme exists and if the quantity of the item at 1 then need to splice item out of shopping cart and update the carts state
+         if(cartItem && (item.quantity == 1)){
+           if(item.id == productId){
+                 const updatedCart = shoppingCart.splice(index, 1)
+                 return(setShoppingCart([...updatedCart]))
+            }
   
-      //   }else if(item.id == productId){
-      //     return {...item, quantity: item.quantity-1}
+         } else if(item.id == productId){
+           return {...item, quantity: item.quantity-1}
   
-      //   }
-      // })
+         }
+       })
       
-        if(cartItem){
-        
+        if(cartItem){   
         const updateCart = shoppingCart?.map((item)=>{
-             console.log("item quantity:" , item.quantity)
+             
+
              if (item.quantity == 0){
                const updatedCart = shoppingCart.filter(item => item.id == productId.id)
                return(setShoppingCart([...updatedCart]))
@@ -124,6 +113,7 @@ export default function App() {
       <BrowserRouter>
         <main>
           
+          {/* routes linking to to different components in website */}
           <Routes>
             <Route path="" element={<Overlay 
             category={category} 
@@ -134,16 +124,12 @@ export default function App() {
             quantity = {quantity}
             products = {products}
             setShoppingCart = {setShoppingCart}
-          //  totalCost = {totalPriceRef.current}
-           // item = {item}
             />}>
-              <Route path="" element={<Home products={products} searchTerm={searchTerm} category={category} addProduct={addProduct} removeProduct={removeProduct}/>} />
-              
+
+              <Route path="" element={<Home products={products} searchTerm={searchTerm} category={category} addProduct={addProduct} removeProduct={removeProduct}/>} />  
               <Route path="/products/:id" element={<ProductDetails />} />
               <Route path = "" element= {<About/>}/>
             </Route>
-            
-            
           </Routes>
 
         </main>
