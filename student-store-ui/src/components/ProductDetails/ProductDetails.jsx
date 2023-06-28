@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function ProductDetails() {
+
+  //setting states for function
   const [product, setProduct] = useState({});
   const url = "https://codepath-store-api.herokuapp.com/store/";
+  const {id} = useParams();
 
-  const { id } = useParams();
-
+  //sets product to specified product based off id when user clicks on product to get extra detail on it
   useEffect(() => {
     axios.get(url + id).then((response) => {
       setProduct(response.data.product);
@@ -119,6 +121,7 @@ export default function ProductDetails() {
                     <p className="product-description">{product.description}</p>
                   </div>
                   <div className="actions">
+                    
                     <div className="buttons">
                       <button className="add">
                         <i className="material-icons">add</i>
