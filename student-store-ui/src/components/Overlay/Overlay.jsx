@@ -4,9 +4,10 @@ import Hero from "../Hero/Hero";
 import SearchBar from "../SearchBar/SearchBar";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
+
+//overlay component that holds frame for different parts of webpage like the sidebar and searchbar
 export default function Overlay({category, setCategory, searchInput, setSearchInput, shoppingCart, quantity, products, setShoppingCart,totalPrice}){
-    //item={item}
+  
     return(
         <main>
         <Sidebar 
