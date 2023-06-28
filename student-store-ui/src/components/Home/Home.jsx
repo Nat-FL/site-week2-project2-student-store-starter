@@ -5,6 +5,7 @@ import ContactUs from "../Contact/Contact"
 import Footer from "../Footer/Footer"
 import Products from "../Products/Products"
 
+//home compoenent that holds frame for different parts of webpage like about, contact, footer, and products
 export default function Home({products,searchTerm,category, addProduct, removeProduct}) {
 
   
